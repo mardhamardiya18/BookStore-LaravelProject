@@ -447,4 +447,14 @@ footer .row-copy i {
 .payment .btn-checkout:hover {
   background-color: #93ae18;
 }
+
+.auth-login {
+  margin-top: 200px;
+}
+
+.auth-login h1 {
+  font-size: 30px;
+  font-weight: 700;
+  color: #463c74;
+}
 /*# sourceMappingURL=main.css.map */

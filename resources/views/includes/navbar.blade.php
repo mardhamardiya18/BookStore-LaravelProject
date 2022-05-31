@@ -25,7 +25,7 @@
                     <a class="nav-link btn-second text-center" href="{{ route('login') }}">Login</a>
                 </li>
                 <li class="nav-item mt-3 mt-lg-0">
-                    <a class="nav-link btn-first text-center" href="#">Register</a>
+                    <a class="nav-link btn-first text-center" href="{{ route('register') }}">Register</a>
                 </li>
             </ul>
         </div>

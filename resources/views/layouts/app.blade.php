@@ -12,7 +12,7 @@
 
 <body>
     {{-- Navbar --}}
-    @if (Request::url() != 'http://localhost:8000/login')
+    @if (Request::url() != 'http://localhost:8000/login' && Request::url() != 'http://localhost:8000/register')
         @include('includes.navbar')
     @endif
 

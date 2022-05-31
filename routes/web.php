@@ -24,7 +24,3 @@ Route::get('/detail', function () {
 Route::get('/cart', function () {
     return view('pages.cart');
 })->name('cart');
-
-Route::get('/login', function () {
-    return view('auth.login');
-})->name('login');
