@@ -1,0 +1,18 @@
+Your task is to create an application in PHP for computer warehouse management.
+The application must:
+	1.Make it possible to register a new user (10 points).
+	2.Enable login of an existing user (5 points):-after a 3 logon failure, it should block the user for 30 seconds,-password complexity 
+		verification (both from the PHP side and the front).
+	3.Be based on the MySQL database (1 point).
+	4.Enable the management of devices available in the warehouse. Each of the equipment should be defined by the following fields (10 points):-
+		main key,-category  (categories  should  be  defined  in  a  separate  table.  The  application  should enable category 
+		management).
+			-name,
+			-creation date,
+			-current quantity in stock.
+	5.Enable  the  acceptance  and  release  of  equipment  (they  should  be  recorded  in  the database and on their basis the application 
+		should display the current amount of the equipment) (4 points).
+	Additionally, the application should:
+		-use objects (10 points),
+		-use the Bootstrap framework (4 points),
+		-be responsive (1 points).

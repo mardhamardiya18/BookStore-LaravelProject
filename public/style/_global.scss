@@ -1,0 +1,402 @@
+* {
+  font-family: "Merriweather", serif;
+  list-style: none !important;
+  text-decoration: none !important;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: $primary_bg;
+}
+
+.btn-first {
+  padding: 12px 24px !important;
+  border-radius: 8px;
+  background-color: $button_color;
+  color: #fff;
+
+  &:hover {
+    background-color: #93ae18;
+  }
+
+  @include media-breakpoint-down(sm) {
+    padding: 10px 20px !important;
+    font-size: 14px;
+  }
+}
+
+.btn-second {
+  padding: 12px 24px !important;
+  border-radius: 8px;
+  border: 1px solid $button_color;
+  color: $button_color;
+
+  &:hover {
+    background-color: $button_color;
+    color: #fff;
+  }
+
+  @include media-breakpoint-down(sm) {
+    padding: 10px 20px !important;
+    font-size: 14px;
+  }
+}
+
+.navbar {
+  .navbar-collapse {
+    .input-group {
+      margin-top: 70px;
+      @include media-breakpoint-between(md, lg) {
+        margin-top: 100px;
+      }
+      @include media-breakpoint-down(sm) {
+        margin-top: 80px;
+      }
+    }
+  }
+  .navbar-brand {
+    color: $accen;
+    font-weight: map-get($fonts_weight, bold);
+
+    span {
+      color: $button_color;
+    }
+  }
+
+  i {
+    font-size: 30px;
+  }
+
+  .btn-search {
+    padding: 8px;
+    border: 1px solid $button_color;
+    color: $button_color;
+    border-radius: 0px 5px 5px 0px;
+
+    &:hover {
+      background-color: $button_color;
+      color: #fff;
+    }
+  }
+
+  .input-group {
+    width: 50%;
+
+    @include media-breakpoint-down(lg) {
+      width: 100%;
+    }
+  }
+}
+
+.menu-wrapper {
+  margin-top: 120px;
+  @include media-breakpoint-down(lg) {
+    margin-top: 100px;
+  }
+
+  .collapse {
+    .list-group-item {
+      &.active {
+        background-color: $button_color !important;
+        border-color: $button_color !important;
+      }
+    }
+  }
+}
+
+.menu {
+  a {
+    color: rgb(26, 24, 24);
+    margin: 0 30px;
+    font-weight: map-get($fonts_weight, light);
+    @include media-breakpoint-down(lg) {
+      margin: 0 20px;
+    }
+
+    &.active {
+      color: #93ae18;
+      font-weight: map-get($fonts_weight, bold);
+    }
+  }
+}
+
+.header {
+  margin-top: 200px;
+  @include media-breakpoint-down(sm) {
+    margin-top: 180px;
+  }
+
+  .carousel-indicators {
+    button {
+      background-color: $button_color;
+      height: 6px !important;
+      border-radius: 5px;
+
+      @include media-breakpoint-down(sm) {
+        height: 2px !important;
+      }
+    }
+  }
+}
+
+.popular {
+  margin-top: 150px;
+  @include media-breakpoint-down(sm) {
+    margin-top: 50px;
+  }
+
+  h1 {
+    font-size: 30px;
+    color: $accen;
+    @include media-breakpoint-down(sm) {
+      font-size: 20px;
+    }
+  }
+
+  .row-card {
+    .rating {
+      i {
+        color: #b6db11;
+        font-size: 22px;
+
+        @include media-breakpoint-down(sm) {
+          font-size: 16px;
+        }
+      }
+    }
+
+    .title {
+      font-size: 22px;
+      color: $accen;
+      font-weight: map-get($fonts_weight, bold);
+
+      @include media-breakpoint-down(sm) {
+        font-size: 16px;
+      }
+    }
+
+    img {
+      width: 200px;
+    }
+
+    .category {
+      font-size: 12px;
+
+      @include media-breakpoint-down(sm) {
+        font-size: 10px;
+      }
+    }
+
+    .cart {
+      .price {
+        color: $accen;
+        font-size: 20px;
+        font-weight: map-get($fonts_weight, bold);
+
+        @include media-breakpoint-down(sm) {
+          font-size: 12px;
+        }
+      }
+      i {
+        font-size: 25px;
+        color: #fff;
+
+        @include media-breakpoint-down(sm) {
+          font-size: 16px;
+        }
+      }
+      .btn-cart {
+        background-color: $button_color;
+        padding: 10px;
+        border-radius: 8px;
+
+        @include media-breakpoint-down(sm) {
+          padding: 6px;
+        }
+
+        &:hover {
+          background-color: #93ae18;
+        }
+      }
+    }
+  }
+}
+
+.subscriptions {
+  margin-top: 150px;
+
+  @include media-breakpoint-down(sm) {
+    margin-top: 100px;
+  }
+
+  .container {
+    background-image: url("../images/background.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    border-radius: 10px;
+    background-size: cover;
+
+    .col-sub {
+      padding: 120px 0;
+      @include media-breakpoint-down(sm) {
+        padding: 80px 0;
+      }
+
+      input {
+        &::placeholder {
+          @include media-breakpoint-down(sm) {
+            font-size: 10px;
+          }
+        }
+      }
+    }
+  }
+}
+
+.testimoni {
+  margin-top: 150px;
+  @include media-breakpoint-down(sm) {
+    margin-top: 100px;
+  }
+
+  .card {
+    position: relative;
+    border: 1px solid $button_color !important;
+
+    .pic {
+      position: absolute;
+      top: -30px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    .icon {
+      position: absolute;
+      top: -30px;
+      right: 10px;
+    }
+  }
+}
+
+footer {
+  margin-top: 150px;
+  background-color: $bg;
+  padding-top: 50px;
+  @include media-breakpoint-down(sm) {
+    margin-top: 100px;
+  }
+
+  .brand {
+    font-weight: map-get($fonts_weight, bold);
+    color: $accen;
+
+    span {
+      color: $button_color;
+    }
+  }
+
+  .title-info {
+    font-size: 20px;
+    color: $accen;
+    font-weight: map-get($fonts_weight, bold);
+  }
+
+  a {
+    color: rgb(23, 21, 21);
+  }
+
+  ul {
+    li {
+      margin-top: 20px;
+    }
+  }
+
+  .row-copy {
+    i {
+      font-size: 40px;
+      color: $button_color;
+    }
+  }
+}
+
+// DETAIL CSS
+.bread {
+  margin-top: 150px;
+  @include media-breakpoint-down(sm) {
+    margin-top: 100px;
+  }
+}
+.detail-product {
+  img {
+    width: 300px;
+
+    @include media-breakpoint-down(sm) {
+      width: 200px;
+    }
+  }
+  hr {
+    border: 1px solid #463c7493;
+  }
+
+  .rate {
+    i {
+      font-size: 30px;
+      color: #b6db11;
+    }
+  }
+
+  .price {
+    font-size: 24px;
+    font-weight: map-get($fonts_weight, bold);
+    color: $accen;
+  }
+}
+
+.detail-description {
+  h3 {
+    font-size: 25px;
+  }
+  p {
+    font-weight: map-get($fonts_weight, light);
+  }
+}
+
+.review {
+  i {
+    font-size: 20px;
+    color: $button_color;
+  }
+  h3 {
+    font-size: 25px;
+  }
+
+  @include media-breakpoint-down(sm) {
+    .name,
+    .timestamp {
+      font-size: 14px;
+    }
+  }
+}
+
+// Cart CSS
+.shipping {
+  h3 {
+    font-size: 25px;
+    color: $accen;
+    font-weight: map-get($fonts_weight, bold);
+  }
+}
+
+.payment {
+  h3 {
+    font-size: 25px;
+    color: $accen;
+    font-weight: map-get($fonts_weight, bold);
+  }
+  .btn-checkout {
+    background-color: $button_color;
+
+    &:hover {
+      background-color: #93ae18;
+    }
+  }
+}
