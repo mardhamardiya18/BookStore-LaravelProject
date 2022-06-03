@@ -14,21 +14,37 @@
                         window to the world</h1>
                 </div>
                 <div class="col-md-6 offset-1">
-                    <form action="#">
+                    <form action="{{ route('register') }}" method="POST" enctype="multipart/form-data">
+                        @csrf
                         <div class="form-group">
                             <label for="name">Full Name</label>
-                            <input type="name" name="name" id="name" class="form-control">
+                            <input type="name" name="name" value="{{ old('name') }}" id="name" class="form-control">
+                            @error('name')
+                                <div class="alert alert-danger mt-2">
+                                    {{ $message }}
+                                </div>
+                            @enderror
                         </div>
                         <div class="form-group mt-3">
                             <label for="email">Email</label>
-                            <input type="email" name="email" id="email" class="form-control">
+                            <input type="email" name="email" value="{{ old('email') }}" id="email" class="form-control">
+                            @error('email')
+                                <div class="alert alert-danger mt-2">
+                                    {{ $message }}
+                                </div>
+                            @enderror
                         </div>
                         <div class="form-group mt-3">
                             <label for="password">Password</label>
                             <div class="input-group" id="show_hide_password">
-                                <input class="form-control" type="password" name="password" id="password">
-
+                                <input class="form-control" type="password" value="{{ old('password') }}"
+                                    name="password" id="password">
                             </div>
+                            @error('password')
+                                <div class="alert alert-danger mt-2">
+                                    {{ $message }}
+                                </div>
+                            @enderror
 
                         </div>
                         <div class="form-group mt-3">
@@ -40,6 +56,11 @@
                                     <a href=""><i class='bx bx-hide'></i></a>
                                 </div>
                             </div>
+                            @error('password_confirmation')
+                                <div class="alert alert-danger mt-2">
+                                    {{ $message }}
+                                </div>
+                            @enderror
 
                         </div>
                         <div class="form-group mt-5">

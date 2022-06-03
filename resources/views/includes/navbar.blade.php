@@ -21,12 +21,39 @@
                     <a class="nav-link" href="#"><i class="bx bx-cart-alt bx-tada-hover"></i>
                         <span class="badge text-bg-warning rounded-circle position-absolute">2</span></a>
                 </li>
-                <li class="nav-item me-lg-3 me-0 mt-4 mt-lg-0">
-                    <a class="nav-link btn-second text-center" href="{{ route('login') }}">Login</a>
-                </li>
-                <li class="nav-item mt-3 mt-lg-0">
-                    <a class="nav-link btn-first text-center" href="{{ route('register') }}">Register</a>
-                </li>
+
+                @guest
+
+
+                    <li class="nav-item me-lg-3 me-0 mt-4 mt-lg-0">
+                        <a class="nav-link btn-second text-center" href="{{ route('login') }}">Login</a>
+                    </li>
+                    <li class="nav-item mt-3 mt-lg-0">
+                        <a class="nav-link btn-first text-center" href="{{ route('register') }}">Register</a>
+                    </li>
+                @endguest
+
+                @auth
+                    <li class="nav-item mt-3 mt-lg-0">
+                        <p class="nav-link mt-1">Hi, Melissa</p>
+                    </li>
+                    <li class="nav-item">
+                        <img src="/images/testi1.png" class="img-fluid" width="50" alt="" id="dropdownMenuButton1"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                        <div class="dropdown-center">
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                <li><a class="dropdown-item" href="#">Go to dashboard</a></li>
+                                <li><a class="dropdown-item" href="#">Setting</a></li>
+                                <li>
+                                    <form action="/logout" method="POST">
+                                        @csrf
+                                        <button class="btn btn-danger ms-3 mt-3">Logout</button>
+                                    </form>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                @endauth
             </ul>
         </div>
     </div>
