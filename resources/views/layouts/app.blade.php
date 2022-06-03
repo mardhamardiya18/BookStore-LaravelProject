@@ -15,6 +15,7 @@
     @if (Request::url() != 'http://localhost:8000/login' && Request::url() != 'http://localhost:8000/register')
         @include('includes.navbar')
     @endif
+    @include('sweetalert::alert')
 
 
     @yield('content')

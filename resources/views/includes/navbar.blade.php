@@ -35,11 +35,21 @@
 
                 @auth
                     <li class="nav-item mt-3 mt-lg-0">
-                        <p class="nav-link mt-1">Hi, Melissa</p>
+                        @php
+                            $fullname = Auth::user()->name;
+                        @endphp
+                        <p class="nav-link mt-1">Hi, {{ strtok($fullname, ' ') }}</p>
                     </li>
                     <li class="nav-item">
-                        <img src="/images/testi1.png" class="img-fluid" width="50" alt="" id="dropdownMenuButton1"
-                            data-bs-toggle="dropdown" aria-expanded="false">
+                        @if (Auth::user()->avatar)
+                            <img src="{{ Auth::user()->avatar }}" class="img-fluid" width="50" alt=""
+                                id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                        @elseif (Auth::user()->profile_pic)
+                            <img src="{{ Storage::url(Auth::user()->profile_pic) }}" class="img-fluid" width="50"
+                                alt="" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                        @endif
+                        <img src="{{ Auth::user()->gravatar() }}" class="img-fluid rounded-circle" alt=""
+                            id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                         <div class="dropdown-center">
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                 <li><a class="dropdown-item" href="#">Go to dashboard</a></li>
