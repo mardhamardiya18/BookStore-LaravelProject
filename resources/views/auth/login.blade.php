@@ -54,7 +54,8 @@
                     </small>
 
                     <p class="text-center mt-4">Or</p>
-                    <a href="#" class="btn btn-danger w-100"><i class='bx bxl-google'></i> Login with Google</a>
+                    <a href="{{ route('auth-with-google') }}" class="btn btn-danger w-100"><i class='bx bxl-google'></i>
+                        Login with Google</a>
                 </div>
             </div>
         </div>

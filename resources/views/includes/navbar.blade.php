@@ -42,14 +42,16 @@
                     </li>
                     <li class="nav-item">
                         @if (Auth::user()->avatar)
-                            <img src="{{ Auth::user()->avatar }}" class="img-fluid" width="50" alt=""
+                            <img src="{{ Auth::user()->avatar }}" class="img-fluid rounded-circle" width="50" alt=""
                                 id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                         @elseif (Auth::user()->profile_pic)
-                            <img src="{{ Storage::url(Auth::user()->profile_pic) }}" class="img-fluid" width="50"
-                                alt="" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                            <img src="{{ Storage::url(Auth::user()->profile_pic) }}" class="img-fluid rounded-circle"
+                                width="50" alt="" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                        @else
+                            <img src="{{ Auth::user()->gravatar() }}" class="img-fluid rounded-circle" alt=""
+                                id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                         @endif
-                        <img src="{{ Auth::user()->gravatar() }}" class="img-fluid rounded-circle" alt=""
-                            id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+
                         <div class="dropdown-center">
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                 <li><a class="dropdown-item" href="#">Go to dashboard</a></li>

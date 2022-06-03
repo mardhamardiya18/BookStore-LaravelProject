@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,3 +25,6 @@ Route::get('/detail', function () {
 Route::get('/cart', function () {
     return view('pages.cart');
 })->name('cart');
+
+Route::get('/auth-with-google', [AuthController::class, 'google'])->name('auth-with-google');
+Route::get('/auth/callback', [AuthController::class, 'handleProviderCallback']);
