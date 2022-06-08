@@ -17,6 +17,7 @@
 
 <body class="sb-nav-fixed">
     <div class="bg-admin w-100 h-25 position-absolute top-0"></div>
+    @include('sweetalert::alert')
     @include('includes.admin.navbar')
     <div id="layoutSidenav">
         @include('includes.admin.sidebar')

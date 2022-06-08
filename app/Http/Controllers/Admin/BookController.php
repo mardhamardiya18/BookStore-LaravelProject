@@ -3,12 +3,14 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Book;
 use App\Models\Category;
 use Illuminate\Http\Request;
-use Yajra\DataTables\DataTables;
+use Illuminate\Support\Facades\Storage;
+use Yajra\DataTables\Facades\DataTables;
 use Illuminate\Support\Str;
 
-class CategoryController extends Controller
+class BookController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,7 +21,7 @@ class CategoryController extends Controller
     {
         if (request()->ajax()) {
 
-            $query = Category::query();
+            $query = Book::query()->with('category');
             return DataTables::of($query)
                 ->addColumn('action', function ($item) {
                     return '
@@ -31,22 +33,27 @@ class CategoryController extends Controller
                         </button>
                         <div class="dropdown-menu">
                            
-                            <form action="' . route('category.destroy', $item->id) . '" method="POST">
+                            <form action="' . route('book.destroy', $item->id) . '" method="POST">
                             ' . method_field('delete') . csrf_field() . '
 
                             <button class="text-danger dropdown-item" type="submit" >Hapus</button>
                             </form>
+                            <a class="text-danger dropdown-item" href="' . route('book.show', $item->id) . '">Detail</a>
+                    
                         </div>
                         </div>
                     </div>                
                 ';
                 })
 
-                ->rawColumns(['action'])
+                ->editColumn('photo', function ($item) {
+                    return $item->photo ? '<img src="' . Storage::url($item->photo) . '" width="100"/>' : '';
+                })
+                ->rawColumns(['action', 'photo'])
                 ->make(true);
         }
 
-        return view('pages.admin.category.index');
+        return view('pages.admin.book.index');
     }
 
     /**
@@ -56,7 +63,11 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('pages.admin.category.create');
+        $categories = Category::get();
+
+        return view('pages.admin.book.create', [
+            'categories' => $categories
+        ]);
     }
 
     /**
@@ -69,13 +80,14 @@ class CategoryController extends Controller
     {
         $item = $request->all();
 
-        $item['slug'] = Str::slug($request->name);
+        $item['slug'] = Str::slug($request->title);
+        $item['photo'] = $request->file('photo')->store('asset/buku', 'public');
 
-        Category::create($item);
+        Book::create($item);
 
-        toast('Kategori ' . $item['name'] . ' telah ditambahkan👍', 'success');
+        toast('Buku ' . $item['title'] . ' berhasil ditambahkan👍', 'success');
 
-        return redirect()->route('category.index');
+        return redirect(route('book.index'));
     }
 
     /**
@@ -120,10 +132,6 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        $item = Category::findOrFail($id);
-
-        $item->delete();
-        toast('Kategori telah dihapus👍', 'success');
-        return redirect(route('category.index'));
+        //
     }
 }

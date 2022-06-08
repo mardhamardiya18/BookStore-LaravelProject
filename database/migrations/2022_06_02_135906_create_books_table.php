@@ -28,6 +28,7 @@ class CreateBooksTable extends Migration
             $table->string('dimention');
             $table->integer('weight');
             $table->integer('sales_amount')->nullable();
+            $table->integer('views')->default(0);
             $table->timestamps();
         });
     }

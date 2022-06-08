@@ -1,18 +1,18 @@
 @extends('layouts.admin')
 
 @section('title')
-    Admin - Category
+    Admin - Book
 @endsection
 
 @section('content')
     <main>
         <div class="container-fluid px-4">
-            <h1 class="mt-4">Kelola Kategori</h1>
+            <h1 class="mt-4">Kelola Buku</h1>
             <p>Kelola apapun menjadi mudah</p>
 
             <div class="row mt-4">
                 <div class="col-12">
-                    <a href="{{ route('category.create') }}" class="btn btn-danger">Tambah Kategori</a>
+                    <a href="{{ route('book.create') }}" class="btn btn-danger">Tambah Buku</a>
                 </div>
             </div>
 
@@ -24,8 +24,10 @@
                                 <table class="table table-striped scrolled w-100" id="crudTable">
                                     <thead>
                                         <td>ID</td>
-                                        <td>Nama</td>
-                                        <td>Slug</td>
+                                        <td>Photo</td>
+                                        <td>Judul</td>
+                                        <td>Kategori</td>
+                                        <td>Harga</td>
                                         <td>Aksi</td>
                                     </thead>
                                 </table>
@@ -53,12 +55,20 @@
                     name: 'id'
                 },
                 {
-                    data: 'name',
-                    name: 'name'
+                    data: 'photo',
+                    name: 'photo'
                 },
                 {
-                    data: 'slug',
-                    name: 'slug'
+                    data: 'title',
+                    name: 'title'
+                },
+                {
+                    data: 'category.name',
+                    name: 'category.name'
+                },
+                {
+                    data: 'price',
+                    name: 'price'
                 },
                 {
                     data: 'action',
