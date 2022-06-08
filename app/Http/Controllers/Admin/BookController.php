@@ -38,7 +38,7 @@ class BookController extends Controller
 
                             <button class="text-danger dropdown-item" type="submit" >Hapus</button>
                             </form>
-                            <a class="text-danger dropdown-item" href="' . route('book.show', $item->id) . '">Detail</a>
+                            <a class="text-danger dropdown-item" href="' . route('book.edit', $item->id) . '">Detail</a>
                     
                         </div>
                         </div>
@@ -49,7 +49,10 @@ class BookController extends Controller
                 ->editColumn('photo', function ($item) {
                     return $item->photo ? '<img src="' . Storage::url($item->photo) . '" width="100"/>' : '';
                 })
-                ->rawColumns(['action', 'photo'])
+                ->editColumn('price', function ($item) {
+                    return 'Rp ' . number_format($item->price) . '';
+                })
+                ->rawColumns(['action', 'photo', 'price'])
                 ->make(true);
         }
 
@@ -109,7 +112,13 @@ class BookController extends Controller
      */
     public function edit($id)
     {
-        //
+        $book = Book::with('category')->findOrFail($id);
+        $categories = Category::get();
+
+        return view('pages.admin.book.edit', [
+            'book' => $book,
+            'categories' => $categories
+        ]);
     }
 
     /**
@@ -121,7 +130,27 @@ class BookController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = $request->all();
+        $book = Book::findOrFail($id);
+
+        if ($request->title) {
+            $data['slug'] = Str::slug($request->title);
+        } else {
+            unset($data['slug']);
+        }
+
+        if ($request->photo) {
+            Storage::disk('public')->delete($book->photo);
+            $data['photo'] = $request->file('photo')->store('asset/buku', 'public');
+        } else {
+            unset($data['photo']);
+        }
+
+        $book->update($data);
+
+        toast('Buku ' . $data['title'] . ' berhasil diupdate', 'success');
+
+        return redirect(route('book.index'));
     }
 
     /**
@@ -132,6 +161,13 @@ class BookController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $data = Book::findOrFail($id);
+
+        Storage::disk('public')->delete($data->photo);
+        $data->delete();
+
+        toast('Data buku berhasil dihapus👍', 'success');
+
+        return redirect(route('book.index'));
     }
 }

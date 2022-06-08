@@ -68,7 +68,8 @@
                 },
                 {
                     data: 'price',
-                    name: 'price'
+                    name: 'price',
+                    render: $.fn.dataTable.render.number('.')
                 },
                 {
                     data: 'action',
