@@ -54,7 +54,7 @@
 
                         <div class="dropdown-center">
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                <li><a class="dropdown-item" href="#">Go to dashboard</a></li>
+                                <li><a class="dropdown-item" href="{{ route('dashboard') }}">Go to dashboard</a></li>
                                 <li><a class="dropdown-item" href="#">Setting</a></li>
                                 <li>
                                     <form action="/logout" method="POST">

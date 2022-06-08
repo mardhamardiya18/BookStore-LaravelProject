@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 
@@ -28,3 +30,8 @@ Route::get('/cart', function () {
 
 Route::get('/auth-with-google', [AuthController::class, 'google'])->name('auth-with-google');
 Route::get('/auth/callback', [AuthController::class, 'handleProviderCallback']);
+
+Route::prefix('admin')->group(function () {
+    Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+    Route::resource('/category', CategoryController::class);
+});
