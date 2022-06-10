@@ -32,7 +32,8 @@
                 @foreach ($books_popular as $popular)
                     <div class="col-lg-3 col-6">
                         <div class="card p-3 p-sm-4">
-                            <img src="{{ Storage::url($popular->photo) }}" class="img-fluid m-auto" alt="" />
+                            <img src="{{ Storage::url($popular->photo) }}" class="img-fluid m-auto"
+                                alt="{{ $popular->title }}" title="{{ $popular->title }}" />
                             <div class="card-body mt-4 p-0">
                                 <h2 class="title">{{ $popular->title }}</h2>
                                 <div class="rating">
@@ -51,7 +52,7 @@
 
                                 <div class="cart d-flex align-items-center mt-4 justify-content-between">
                                     <p class="m-0 price">Rp {{ number_format($popular->price) }}</p>
-                                    <a href="{{ route('detail') }}" class="btn-cart"><i
+                                    <a href="{{ route('detail', $popular->slug) }}" class="btn-cart"><i
                                             class="bx bx-shopping-bag"></i></a>
                                 </div>
                             </div>

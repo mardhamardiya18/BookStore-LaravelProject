@@ -8,7 +8,6 @@
 
 * {
   font-family: "Merriweather", serif;
-  list-style: none !important;
   text-decoration: none !important;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -420,6 +419,10 @@ footer .row-copy i {
   font-size: 24px;
   font-weight: 700;
   color: #463c74;
+}
+
+.detail-product ul li {
+  list-style: disc !important;
 }
 
 .detail-description h3 {

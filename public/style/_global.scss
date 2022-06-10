@@ -1,6 +1,5 @@
 * {
     font-family: "Merriweather", serif;
-    list-style: none !important;
     text-decoration: none !important;
     box-sizing: border-box;
 }
@@ -349,6 +348,11 @@ footer {
         font-size: 24px;
         font-weight: map-get($fonts_weight, bold);
         color: $accen;
+    }
+    ul {
+        li {
+            list-style: disc !important;
+        }
     }
 }
 
