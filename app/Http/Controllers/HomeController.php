@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Banner;
 use App\Models\Book;
 use Illuminate\Http\Request;
 
@@ -11,10 +12,11 @@ class HomeController extends Controller
     {
         $books = Book::with('category')->latest()->limit(4)->get();
         $books_popular = Book::with('category')->orderBy('views', 'desc')->limit(4)->get();
-
+        $banners = Banner::latest()->get();
         return view('pages.homepage', [
             'books' => $books,
-            'books_popular' => $books_popular
+            'books_popular' => $books_popular,
+            'banners' => $banners
         ]);
     }
 

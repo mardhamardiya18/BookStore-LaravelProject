@@ -28,7 +28,8 @@
                     </div>
                     Kelola Buku
                 </a>
-                <a class="nav-link {{ request()->is('admin/banner*') ? 'active' : '' }}" href="index.html">
+                <a class="nav-link {{ request()->is('admin/banner*') ? 'active' : '' }}"
+                    href="{{ route('banner.index') }}">
                     <div class="sb-nav-link-icon">
                         <i class='bx bxs-notepad bx-sm'></i>
                     </div>

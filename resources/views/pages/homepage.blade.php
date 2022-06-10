@@ -45,23 +45,22 @@
             <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" data-bs-touch="true"
                 data-bs-pause="hover">
                 <div class="carousel-indicators">
-                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0"
-                        class="active" aria-current="true" aria-label="Slide 1"></button>
-                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
-                        aria-label="Slide 2"></button>
-                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
-                        aria-label="Slide 3"></button>
+                    @foreach ($banners as $banner)
+                        <button type="button" data-bs-target="#carouselExampleIndicators"
+                            data-bs-slide-to="{{ $loop->index }}" class="{{ $loop->first ? 'active' : '' }}"
+                            aria-current="true" aria-label="Slide 1"></button>
+                    @endforeach
+
                 </div>
                 <div class="carousel-inner" id="myCarousel">
-                    <div class="carousel-item active" data-bs-interval="2000">
-                        <a href="#"><img src="images/banner.png" class="d-block w-100" alt="..." /></a>
-                    </div>
-                    <div class="carousel-item" data-bs-interval="2000">
-                        <a href="#"><img src="images/banner.png" class="d-block w-100" alt="..." /></a>
-                    </div>
-                    <div class="carousel-item" data-bs-interval="2000">
-                        <a href="#"><img src="images/banner.png" class="d-block w-100" alt="..." /></a>
-                    </div>
+
+                    @foreach ($banners as $banner)
+                        <div class="carousel-item {{ $loop->first ? 'active' : '' }}" data-bs-interval="2000">
+                            <a href="{{ $banner->url }}"><img src="{{ Storage::url($banner->photo) }}"
+                                    class="d-block w-100" alt="{{ $banner->event }}"
+                                    title="{{ $banner->event }}" /></a>
+                        </div>
+                    @endforeach
                 </div>
             </div>
         </div>
