@@ -65,6 +65,7 @@
                             <div class="form-group mt-3">
                                 <label for="photo">Upload Cover Buku</label>
                                 <input type="file" class="form-control" name="photo" id="photo">
+                                <small class="text-muted">*Resolusi 180x260px</small>
                             </div>
                             <div class="col-md-12 mt-3">
                                 <img id="preview-image-thumbnail-upload" src="" alt="preview image"

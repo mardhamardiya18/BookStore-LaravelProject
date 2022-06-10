@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\BookController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,9 +18,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('pages.homepage');
-})->name('homepage');
+Route::get('/', [HomeController::class, 'index'])->name('homepage');
+Route::get('/book/popular', [HomeController::class, 'popular'])->name('popular');
+Route::get('/book/all', [HomeController::class, 'post'])->name('book');
+Route::get('/book/bestseller', [HomeController::class, 'seller'])->name('bestseller');
 
 Route::get('/detail', function () {
     return view('pages.detail');

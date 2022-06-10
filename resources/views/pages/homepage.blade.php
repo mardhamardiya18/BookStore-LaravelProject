@@ -11,7 +11,7 @@
             <div class="col-12">
                 <div class="menu d-none d-lg-flex justify-content-center">
                     <a href="#" class="active">Home</a>
-                    <a href="#">Best Seller</a>
+                    <a href="{{ route('bestseller') }}">Best Seller</a>
                     <a href="#">Category</a>
                     <a href="#">Community</a>
                     <a href="#">Blog</a>
@@ -75,98 +75,41 @@
                     <h1>Popular Now</h1>
                 </div>
                 <div class="col-6 text-end">
-                    <a href="#" class="btn-first">View All</a>
+                    <a href="{{ route('popular') }}" class="btn-first">View All</a>
                 </div>
             </div>
             <div class="row row-card mt-5 align-items-stretch">
-                <div class="col-lg-3 col-6">
-                    <div class="card p-3 p-sm-4">
-                        <img src="images/book1.png" class="img-fluid m-auto" alt="" />
-                        <div class="card-body mt-4 p-0">
-                            <h2 class="title">Selena</h2>
-                            <div class="rating">
-                                <i class="bx bxs-star"></i>
-                                <i class="bx bxs-star"></i>
-                                <i class="bx bxs-star"></i>
-                                <i class="bx bxs-star"></i>
-                                <i class="bx bxs-star"></i>
-                            </div>
-                            <a href="#" class="category badge text-bg-danger">Novel</a>
 
-                            <div class="cart d-flex align-items-center mt-4 justify-content-between">
-                                <p class="m-0 price">Rp 200.000</p>
-                                <a href="{{ route('detail') }}" class="btn-cart"><i
-                                        class="bx bx-shopping-bag"></i></a>
+
+                @foreach ($books_popular as $popular)
+                    <div class="col-lg-3 col-6">
+                        <div class="card p-3 p-sm-4">
+                            <img src="{{ Storage::url($popular->photo) }}" class="img-fluid m-auto" alt="" />
+                            <div class="card-body mt-4 p-0">
+                                <h2 class="title">{{ $popular->title }}</h2>
+                                <div class="rating">
+                                    <i class="bx bxs-star"></i>
+                                    <i class="bx bxs-star"></i>
+                                    <i class="bx bxs-star"></i>
+                                    <i class="bx bxs-star"></i>
+                                    <i class="bx bxs-star"></i>
+                                </div>
+                                <small class="text-muted">(265 Terjual)</small>
+                                <div>
+                                    <a href="#"
+                                        class="category badge text-bg-danger mt-2">{{ $popular->category->name }}</a>
+                                </div>
+
+
+                                <div class="cart d-flex align-items-center mt-4 justify-content-between">
+                                    <p class="m-0 price">Rp {{ number_format($popular->price) }}</p>
+                                    <a href="{{ route('detail') }}" class="btn-cart"><i
+                                            class="bx bx-shopping-bag"></i></a>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-3 col-6">
-                    <div class="card p-3 p-sm-4">
-                        <img src="images/book2.png" class="img-fluid m-auto" alt="" />
-                        <div class="card-body mt-4 p-0">
-                            <h2 class="title">How To Master Your Habits</h2>
-                            <div class="rating">
-                                <i class="bx bxs-star"></i>
-                                <i class="bx bxs-star"></i>
-                                <i class="bx bxs-star"></i>
-                                <i class="bx bxs-star"></i>
-                                <i class="bx bxs-star"></i>
-                            </div>
-                            <a href="#" class="category badge text-bg-primary">Self Development</a>
-
-                            <div class="cart d-flex align-items-center mt-4 justify-content-between">
-                                <p class="m-0 price">Rp 240.000</p>
-                                <a href="{{ route('detail') }}" class="btn-cart"><i
-                                        class="bx bx-shopping-bag"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-6">
-                    <div class="card p-3 p-sm-4">
-                        <img src="images/book3.png" class="img-fluid m-auto" alt="" />
-                        <div class="card-body mt-4 p-0">
-                            <h2 class="title">Bintang</h2>
-                            <div class="rating">
-                                <i class="bx bxs-star"></i>
-                                <i class="bx bxs-star"></i>
-                                <i class="bx bxs-star"></i>
-                                <i class="bx bxs-star"></i>
-                                <i class="bx bxs-star"></i>
-                            </div>
-                            <a href="#" class="category badge text-bg-danger">Novel</a>
-
-                            <div class="cart d-flex align-items-center mt-4 justify-content-between">
-                                <p class="m-0 price">Rp 200.000</p>
-                                <a href="{{ route('detail') }}" class="btn-cart"><i
-                                        class="bx bx-shopping-bag"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-6 mt-3">
-                    <div class="card p-3 p-sm-4">
-                        <img src="images/book4.png" class="img-fluid m-auto" alt="" />
-                        <div class="card-body mt-4 p-0">
-                            <h2 class="title">Start With Why</h2>
-                            <div class="rating">
-                                <i class="bx bxs-star"></i>
-                                <i class="bx bxs-star"></i>
-                                <i class="bx bxs-star"></i>
-                                <i class="bx bxs-star"></i>
-                                <i class="bx bxs-star"></i>
-                            </div>
-                            <a href="#" class="category badge text-bg-primary">Self Development</a>
-
-                            <div class="cart d-flex align-items-center mt-4 justify-content-between">
-                                <p class="m-0 price">Rp 300.000</p>
-                                <a href="{{ route('detail') }}" class="btn-cart"><i
-                                        class="bx bx-shopping-bag"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>
@@ -179,98 +122,39 @@
                     <h1>Latest Book</h1>
                 </div>
                 <div class="col-6 text-end">
-                    <a href="#" class="btn-first">View All</a>
+                    <a href="{{ route('book') }}" class="btn-first">View All</a>
                 </div>
             </div>
             <div class="row row-card mt-5 align-items-stretch">
-                <div class="col-lg-3 col-6">
-                    <div class="card p-3 p-sm-4">
-                        <img src="images/book5.png" class="img-fluid m-auto" alt="" />
-                        <div class="card-body mt-4 p-0">
-                            <h2 class="title">The Compound Effect</h2>
-                            <div class="rating">
-                                <i class="bx bxs-star"></i>
-                                <i class="bx bxs-star"></i>
-                                <i class="bx bxs-star"></i>
-                                <i class="bx bxs-star"></i>
-                                <i class="bx bxs-star"></i>
-                            </div>
-                            <a href="#" class="category badge text-bg-primary">Self Development</a>
 
-                            <div class="cart d-flex align-items-center mt-4 justify-content-between">
-                                <p class="m-0 price">Rp 310.000</p>
-                                <a href="{{ route('detail') }}" class="btn-cart"><i
-                                        class="bx bx-shopping-bag"></i></a>
+                @foreach ($books as $book)
+                    <div class="col-lg-3 col-6">
+                        <div class="card p-3 p-sm-4">
+                            <img src="{{ Storage::url($book->photo) }}" class="img-fluid m-auto" alt="" />
+                            <div class="card-body mt-4 p-0">
+                                <h2 class="title">{{ $book->title }}</h2>
+                                <div class="rating">
+                                    <i class="bx bxs-star"></i>
+                                    <i class="bx bxs-star"></i>
+                                    <i class="bx bxs-star"></i>
+                                    <i class="bx bxs-star"></i>
+                                    <i class="bx bxs-star"></i>
+                                </div>
+                                <small class="text-muted">(265 Terjual)</small>
+                                <div>
+                                    <a href="#"
+                                        class="category badge mt-2 text-bg-danger">{{ $book->category->name }}</a>
+                                </div>
+
+                                <div class="cart d-flex align-items-center mt-4 justify-content-between">
+                                    <p class="m-0 price">Rp {{ number_format($book->price) }}</p>
+                                    <a href="{{ route('detail') }}" class="btn-cart"><i
+                                            class="bx bx-shopping-bag"></i></a>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-3 col-6">
-                    <div class="card p-3 p-sm-4">
-                        <img src="images/book6.png" class="img-fluid m-auto" alt="" />
-                        <div class="card-body mt-4 p-0">
-                            <h2 class="title">Build A Story Brand</h2>
-                            <div class="rating">
-                                <i class="bx bxs-star"></i>
-                                <i class="bx bxs-star"></i>
-                                <i class="bx bxs-star"></i>
-                                <i class="bx bxs-star"></i>
-                                <i class="bx bxs-star"></i>
-                            </div>
-                            <a href="#" class="category badge text-bg-success">Business</a>
-
-                            <div class="cart d-flex align-items-center mt-4 justify-content-between">
-                                <p class="m-0 price">Rp 140.000</p>
-                                <a href="{{ route('detail') }}" class="btn-cart"><i
-                                        class="bx bx-shopping-bag"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-6 mt-3">
-                    <div class="card p-3 p-sm-4">
-                        <img src="images/book7.png" class="img-fluid m-auto" alt="" />
-                        <div class="card-body mt-4 p-0">
-                            <h2 class="title">Crushing IT</h2>
-                            <div class="rating">
-                                <i class="bx bxs-star"></i>
-                                <i class="bx bxs-star"></i>
-                                <i class="bx bxs-star"></i>
-                                <i class="bx bxs-star"></i>
-                                <i class="bx bxs-star"></i>
-                            </div>
-                            <a href="#" class="category badge text-bg-warning">Technology</a>
-
-                            <div class="cart d-flex align-items-center mt-4 justify-content-between">
-                                <p class="m-0 price">Rp 300.000</p>
-                                <a href="{{ route('detail') }}" class="btn-cart"><i
-                                        class="bx bx-shopping-bag"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-6">
-                    <div class="card p-3 p-sm-4">
-                        <img src="images/book8.png" class="img-fluid m-auto" alt="" />
-                        <div class="card-body mt-4 p-0">
-                            <h2 class="title">Atomic Habits</h2>
-                            <div class="rating">
-                                <i class="bx bxs-star"></i>
-                                <i class="bx bxs-star"></i>
-                                <i class="bx bxs-star"></i>
-                                <i class="bx bxs-star"></i>
-                                <i class="bx bxs-star"></i>
-                            </div>
-                            <a href="#" class="category badge text-bg-primary">Self Development</a>
-
-                            <div class="cart d-flex align-items-center mt-4 justify-content-between">
-                                <p class="m-0 price">Rp 300.000</p>
-                                <a href="{{ route('detail') }}" class="btn-cart"><i
-                                        class="bx bx-shopping-bag"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>
